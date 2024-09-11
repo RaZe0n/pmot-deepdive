@@ -23,6 +23,19 @@ class adminController {
         exit;
     }
 
+    public function getProduct()
+    {
+        $query = "SELECT id,name,description,price,stock,imageURL,category FROM products WHERE id = :id";
+        try {
+            $statement = $this->db->prepare($query);
+            $statement->bindParam(':id', $_GET['id']);
+            $statement->execute();
+            return $statement->fetch();
+        } catch (PDOException $e) {
+            throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
+        }
+    }
+
     public function getOrders() {
         $query = "SELECT orderOwner, status, orderDate, totalPrice FROM orders";
         try {
@@ -64,6 +77,23 @@ class adminController {
         $query = "DELETE FROM products WHERE id = :id";
         try {
             $statement = $this->db->prepare($query);
+            $statement->bindParam(':id', $_POST['id']);
+            $statement->execute();
+        } catch (PDOException $e) {
+            throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
+        }
+        header('Location: /?page=admin');
+    }
+    public function updateProduct() {
+        $query = "UPDATE products SET name = :name, description = :description, price = :price, stock = :stock, imageURL = :imageURL, category = :category WHERE id = :id";
+        try {
+            $statement = $this->db->prepare($query);
+            $statement->bindParam(':name', $_POST['productname']);
+            $statement->bindParam(':description', $_POST['description']);
+            $statement->bindParam(':price', $_POST['price']);
+            $statement->bindParam(':stock', $_POST['voorraad']);
+            $statement->bindParam(':imageURL', $_POST['imgurl']);
+            $statement->bindParam(':category', $_POST['category']);
             $statement->bindParam(':id', $_POST['id']);
             $statement->execute();
         } catch (PDOException $e) {

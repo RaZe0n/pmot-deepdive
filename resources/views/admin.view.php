@@ -2,7 +2,6 @@
 $hideNav = true;
 
 if (!isAdmin()) {
-    // var_dump("ik redirect je, want je bent geen admin.");
     header("Location: /");
 }
 
@@ -13,9 +12,7 @@ $products = $adminController->getProducts();
 $orders = $adminController->getOrders();
 $gebruikers = $adminController->getGebruikers();
 
-var_dump($_POST);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-    var_dump("ik ben hier.");
     $adminController->deleteProduct();
 }
 ?>
@@ -184,7 +181,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                                         <td class="py-2 px-4 border-b border-grey-light"><?= $product['stock'] ?></td>
                                         <td class="py-2 px-4 border-b border-grey-light"><img src="<?= $product['image'] ?>" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
                                         <td class="py-2 px-4 border-b border-grey-light">
-                                            <form class="product-edit-form" action="#" method="POST">
+                                            <form class="product-edit-form" action="" method="GET">
+                                                <input type="hidden" name="page" value="adminProductEdit">
+                                                <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                                                 <button>
                                                     <i class="fas fa-edit text-blue-500 text-2xl"></i>
                                                 </button>
