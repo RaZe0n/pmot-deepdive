@@ -62,3 +62,11 @@ CREATE TABLE IF NOT EXISTS `newsletterEmail` (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `email` VARCHAR(255)
 );
+
+-- Seeder script voor de `orders` tabel
+INSERT INTO `orders` (`orderOwner`, `status`, `orderDate`, `totalPrice`, `addressInformation`, `paymentInformation`) VALUES
+(1, 'complete', '2023-01-15', 150.75, 1, 1),
+(2, 'pending', '2023-02-20', 200.50, 2, 2),
+(3, 'cancelled', '2023-03-10', 75.00, 3, 3),
+(4, 'complete', '2023-04-05', 300.00, 4, 4),
+(5, 'pending', '2023-05-25', 120.25, 5, 5);

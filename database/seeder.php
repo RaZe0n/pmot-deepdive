@@ -5,6 +5,8 @@ require_once('../configs/helper.php');
 
 $tables = ['products', 'customers', 'articles'];
 
+
+
 foreach ($tables as $table) {
     $sql = "TRUNCATE TABLE $table";
     $db->exec($sql);
@@ -214,3 +216,12 @@ foreach ($articles as $article) {
         $db
     );
 }
+$sqlInsert_Orders = "
+INSERT INTO `orders` (`orderOwner`, `status`, `orderDate`, `totalPrice`, `addressInformation`, `paymentInformation`) VALUES
+(1, 'complete', '2023-01-15', 150.75, 1, 1),
+(2, 'pending', '2023-02-20', 200.50, 2, 2),
+(3, 'cancelled', '2023-03-10', 75.00, 3, 3),
+(4, 'complete', '2023-04-05', 300.00, 4, 4),
+(5, 'pending', '2023-05-25', 120.25, 5, 5);
+";
+$db->exec($sqlInsert_Orders);
