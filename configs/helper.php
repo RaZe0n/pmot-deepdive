@@ -1,5 +1,6 @@
 <?php
 
+
 function getPage()
 {
     if (isset($_GET['page'])) {
@@ -121,5 +122,21 @@ function createProduct($name, $description, $price, $stock, $categoryId, $imageU
         echo "Product {$name} is toegevoegd aan de database" . PHP_EOL;
     } catch (PDOException $e) {
         throw new PDOException('Error executing database query: ' . $e->getMessage());
+    }
+}
+function dd(): void
+{
+    $args = func_get_args();
+
+    if (count($args)) {
+        echo "<pre>";
+
+        foreach ($args as $arg) {
+            var_dump($arg);
+        }
+
+        echo "</pre>";
+
+        die();
     }
 }
