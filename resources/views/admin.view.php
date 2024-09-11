@@ -169,6 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Foto</th>
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Bewerken</th>
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Verwijderen</th>
+                                    <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Bekijken</th>
 
                                 </tr>
                             </thead>
@@ -194,6 +195,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                                                 <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                                                 <button>
                                                     <i class="fas fa-trash text-red-500 text-2xl"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td class="py-2 px-4 border-b border-grey-light">
+                                            <form class="product-edit-form" action="" method="GET">
+                                                <input type="hidden" name="page" value="adminProductDetails">
+                                                <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+                                                <button>
+                                                    <i class="fas fa-eye"></i>
                                                 </button>
                                             </form>
                                         </td>
