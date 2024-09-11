@@ -2,6 +2,7 @@
 $hideNav = true;
 
 if (!isAdmin()) {
+    // var_dump("ik redirect je, want je bent geen admin.");
     header("Location: /");
 }
 
@@ -11,6 +12,12 @@ $adminController = new adminController();
 $products = $adminController->getProducts();
 $orders = $adminController->getOrders();
 $gebruikers = $adminController->getGebruikers();
+
+var_dump($_POST);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    var_dump("ik ben hier.");
+    $adminController->deleteProduct();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -163,6 +170,8 @@ $gebruikers = $adminController->getGebruikers();
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Prijs</th>
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Voorrraad</th>
                                     <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Foto</th>
+                                    <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Bewerken</th>
+                                    <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Verwijderen</th>
 
                                 </tr>
                             </thead>
@@ -174,6 +183,21 @@ $gebruikers = $adminController->getGebruikers();
                                         <td class="py-2 px-4 border-b border-grey-light">€<?= $product['price'] ?></td>
                                         <td class="py-2 px-4 border-b border-grey-light"><?= $product['stock'] ?></td>
                                         <td class="py-2 px-4 border-b border-grey-light"><img src="<?= $product['image'] ?>" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
+                                        <td class="py-2 px-4 border-b border-grey-light">
+                                            <form class="product-edit-form" action="#" method="POST">
+                                                <button>
+                                                    <i class="fas fa-edit text-blue-500 text-2xl"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td class="py-2 px-4 border-b border-grey-light">
+                                            <form class="product-delete-form" action="#" method="POST">
+                                                <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
+                                                <button>
+                                                    <i class="fas fa-trash text-red-500 text-2xl"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -205,6 +229,16 @@ $gebruikers = $adminController->getGebruikers();
                         tab.classList.add('hidden');
                     }
                 });
+            });
+        });
+
+        const deleteBtnsForms = document.querySelectorAll('.product-delete-form');
+        deleteBtnsForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (confirm('Weet je zeker dat je dit product wilt verwijderen?')) {
+                    form.submit();
+                }
             });
         });
     </script>
