@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS `products` (
   `description` TEXT,
   `price` DECIMAL(10, 2),
   `stock` INT,
-  `imageURL` varchar(255),
-  `category` varchar(255)
+  `imageURL` varchar(255),  
+  `category` varchar(255),
+  `age` INT
 );
 
 CREATE TABLE IF NOT EXISTS `articles` (
