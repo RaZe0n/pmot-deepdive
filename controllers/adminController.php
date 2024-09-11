@@ -12,7 +12,7 @@ class adminController {
     }
 
     public function getProducts() {
-        $query = "SELECT name,description,price,stock,imageURL,category FROM products";
+        $query = "SELECT id,name,description,price,stock,imageURL,category FROM products";
         try {
             $statement = $this->db->prepare($query);
             $statement->execute();
@@ -20,6 +20,7 @@ class adminController {
         } catch (PDOException $e) {
             throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
         }
+        exit;
     }
 
     public function getOrders() {
@@ -45,6 +46,7 @@ class adminController {
         } catch (PDOException $e) {
             throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
         }
+        exit;
     }
     public function getGebruikers() {
         $query = "SELECT firstname,lastname,email,country FROM customers";
@@ -56,5 +58,17 @@ class adminController {
         } catch (PDOException $e) {
             throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
         }
+        exit;
+    }
+    public function deleteProduct() {
+        $query = "DELETE FROM products WHERE id = :id";
+        try {
+            $statement = $this->db->prepare($query);
+            $statement->bindParam(':id', $_POST['id']);
+            $statement->execute();
+        } catch (PDOException $e) {
+            throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
+        }
+        header('Location: /?page=admin');
     }
 }
