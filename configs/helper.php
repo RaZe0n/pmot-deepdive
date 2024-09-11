@@ -106,17 +106,18 @@ function createUser($firstname, $lastname, $email, $password, $country, $isAdmin
  * @param int $stock The stock quantity of the product
  * @param int $categoryId The ID of the category the product belongs to
  * @param string $imageURL The URL of the product image
+ * @param int $age The recommended age
  * @param PDO $db The PDO database connection
  * @return void
  */
 
-function createProduct($name, $description, $price, $stock, $categoryId, $imageURL, $db)
+function createProduct($name, $description, $price, $stock, $categoryId, $imageURL, $age, $db)
 {
-    $insertQuery = "INSERT INTO products (name, description, price, stock, category, imageURL) VALUES (?, ?, ?, ?, ?, ?)";
+    $insertQuery = "INSERT INTO products (name, description, price, stock, category, imageURL, age) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     try {
         $insertStatement = $db->prepare($insertQuery);
-        $params = [$name, $description, $price, $stock, $categoryId, $imageURL];
+        $params = [$name, $description, $price, $stock, $categoryId, $imageURL, $age];
         $insertStatement->execute($params);
 
         echo "Product {$name} is toegevoegd aan de database" . PHP_EOL;

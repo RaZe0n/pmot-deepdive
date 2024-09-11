@@ -46,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         <!-- Barra de navegación superior -->
         <div class="bg-white text-white shadow w-full p-2 flex items-center justify-between">
             <div class="flex items-center">
-                <div class="hidden md:flex items-center"> <!-- Se oculta en dispositivos pequeños -->
-                    <img src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2">
-                    <h2 class="font-bold text-xl">Nombre de la Aplicación</h2>
-                </div>
+            <div class="flex lg:flex-1">
+            <a href="?page=home" class="-m-1.5 p-1.5">
+                <h1 class=" text-white bg-red-500 rounded p-1 px-2 font-bold">PMOT</h1>
+            </a>
+        </div>
                 <div class="md:hidden flex items-center"> <!-- Se muestra solo en dispositivos pequeños -->
                     <button id="menuBtn">
                         <i class="fas fa-bars text-gray-500 text-lg"></i> <!-- Ícono de menú -->
@@ -91,8 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                 <!-- Señalador de ubicación -->
                 <div class="bg-gradient-to-r from-red-300 to-red-500 h-px mt-2"></div>
 
-                <!-- Copyright al final de la navegación lateral -->
-                <p class="mb-1 px-5 py-3 text-left text-xs text-red-500">Copyright WCSLAT@2023</p>
 
             </div>
 

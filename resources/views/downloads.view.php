@@ -3,9 +3,7 @@
 $hideNav = true;
 
 ?>
-<div class="h-full">
-  <div class="min-h-full">
-    <nav class="border-b border-gray-200 bg-white">
+<nav class="border-b border-gray-200 bg-white">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 justify-between">
           <div class="flex">
@@ -16,8 +14,8 @@ $hideNav = true;
               </a>
             </div>
             <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-              <a href="#" class="border-red-500 text-gray-900 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium" aria-current="page">Dashboard</a>
-              <a href="?page=downloads" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium">Downloads</a>
+              <a href="?page=user" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium" aria-current="page">Dashboard</a>
+              <a href="?page=downloads" class="border-red-500 text-gray-900 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium">Downloads</a>
               <?php if (isset($_SESSION['loggedInUser']) && $_SESSION['loggedInUser']['admin'] == 1) : ?>
                 <a href="?page=admin" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium">Adminpanel</a>
               <?php endif ?>
@@ -85,84 +83,74 @@ $hideNav = true;
         </div>
       </div>
     </nav>
+<div class="flex flex-col items-center">
 
-    <div class="py-10">
-      <header>
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900">Uw producten</h1>
-        </div>
-      </header>
-      <main>
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            <div class="group relative">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <img src="https://pmot.nl/wp-content/uploads/2-5-600x600.jpg" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-              </div>
-              <div class="mt-4 flex justify-between">
-                <div>
-                  <h3 class="text-sm text-gray-700">
-                    <a href="#">
-                      <span aria-hidden="true" class="absolute inset-0"></span>
-                      Starterset Robotica
-                    </a>
-                  </h3>
-                  <p class="mt-1 text-sm text-gray-500">LEGO</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            </div>
-            <div class="mt-6 overflow-hidden border-t border-gray-100">
-              <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                  <table class="w-full text-left">
-                    </thead>
-                    <tbody>
-                      <tr class="text-sm leading-6 text-gray-900">
-                        <th scope="colgroup" colspan="3" class="relative isolate py-2 font-semibold">
-                          <time datetime="2023-03-22">Order historie</time>
-                          <div class="absolute inset-y-0 right-full -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
-                          <div class="absolute inset-y-0 left-0 -z-10 w-screen border-b border-gray-200 bg-gray-50"></div>
-                        </th>
-                      </tr>
-                      <tr>
-                        <td class="relative py-5 pr-6">
-                          <div class="flex gap-x-6">
-                            <svg class="hidden h-6 w-5 flex-none text-gray-400 sm:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-.75-4.75a.75.75 0 001.5 0V8.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0L6.2 9.74a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
-                            </svg>
-                            <div class="flex-auto">
-                              <div class="flex items-start gap-x-3">
-                                <div class="text-sm font-medium leading-6 text-gray-900">Order: 234</div>
-                                <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Afgeleverd</div>
-                              </div>
-                              <div class="mt-1 text-xs leading-5 text-gray-500">€222,-</div>
-                            </div>
-                          </div>
-                          <div class="absolute bottom-0 right-full h-px w-screen bg-gray-100"></div>
-                          <div class="absolute bottom-0 left-0 h-px w-screen bg-gray-100"></div>
-                        </td>
-                        <td class="hidden py-5 pr-6 sm:table-cell">
-                          <div class="text-sm leading-6 text-gray-900">Robotica</div>
-                        </td>
-                        <td class="py-5 text-right">
-                          <div class="flex justify-end">
-                            <a href="#" class="text-sm font-medium leading-6 text-red-500 hover:text-red-600">Bekijk<span class="hidden sm:inline"> order</span><span class="sr-only">, invoice #00012, Reform</span></a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+    <h1 class="text-3xl font-bold tracking-tight">Downloads</h1>
+    <div class="w-4/5 mx-auto">
+
+    
+</div>
+
+
+<div class="flex flex-wrap justify-center">
+    <!-- Handleiding pagina begin-->
+<div class="max-w-xl mx-5 p-6 bg-white rounded-lg shadow my-10 ">
+        <h1 class="text-2xl font-medium mb-2">Product handleiding</h1>
+        <h3 class="text-xl font-medium mb-5">Robot</h3>
+        
+        <div class="pb-4 flex justify-center">
+            <img src="resources/img/handlijding.png" class="rounded h-40" alt="w">
         </div>
-      </main>
+        <div class="inline-flex items-center rounded-md shadow-sm">
+            <button class="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center">
+                <span><svg class="svg-snoweb svg-theme-light w-4 h-4" fill="none" height="100" preserveaspectratio="xMidYMid meet" stroke="currentColor" viewbox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                    <path class="svg-stroke-primary" d="M18.3,65.8v4A11.9,11.9,0,0,0,30.2,81.7H69.8A11.9,11.9,0,0,0,81.7,69.8v-4M65.8,50,50,65.8m0,0L34.2,50M50,65.8V18.3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+                    </path>
+                </svg>
+                  </span>
+                <span><a href="../../resources/pdf/testdit.pdf" download>Download</a></span>
+            </button>
+            <button class="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-r-lg font-medium px-4 py-2 inline-flex space-x-1 items-center">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg> 
+                  </span>
+                <span><a href="../../resources/pdf/testdit.pdf" target="_blank">Bekijken</a></span>
+            </button>
     </div>
-  </div>
+</div>
+    <!-- Handleiding pagina einde -->
+         <!-- Handleiding pagina begin-->
+<div class="max-w-xl mx-5 p-6 bg-white rounded-lg shadow my-10 ">
+        <h1 class="text-2xl font-medium mb-2">Product handleiding</h1>
+        <h3 class="text-xl font-medium mb-5">Kleurplaat</h3>
+        
+        <div class="pb-4 flex justify-center">
+            <img src="resources/img/handlijding.png" class="rounded h-40" alt="w">
+        </div>
+        <div class="inline-flex items-center rounded-md shadow-sm">
+            <button class="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-l-lg font-medium px-4 py-2 inline-flex space-x-1 items-center">
+                <span><svg class="svg-snoweb svg-theme-light w-4 h-4" fill="none" height="100" preserveaspectratio="xMidYMid meet" stroke="currentColor" viewbox="0 0 100 100" width="100" x="0" xmlns="http://www.w3.org/2000/svg" y="0">
+                    <path class="svg-stroke-primary" d="M18.3,65.8v4A11.9,11.9,0,0,0,30.2,81.7H69.8A11.9,11.9,0,0,0,81.7,69.8v-4M65.8,50,50,65.8m0,0L34.2,50M50,65.8V18.3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+                    </path>
+                </svg>
+                  </span>
+                <span><a href="../../resources/pdf/testdit.pdf" download>Download</a></span>
+            </button>
+            <button class="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-r-lg font-medium px-4 py-2 inline-flex space-x-1 items-center">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg> 
+                  </span>
+                <span><a href="../../resources/pdf/testdit.pdf" target="_blank">Bekijken</a></span>
+            </button>
+    </div>
+</div>
+    <!-- Handleiding pagina einde -->
+</div>
 </div>
