@@ -1,9 +1,9 @@
 <?php
 
 $hideNav = true;
-// if (!isAdmin()) {
-//     header("Location: /");
-// }
+if (!isAdmin()) {
+    header("Location: /");
+}
 
 require_once "./controllers/adminController.php";
 
