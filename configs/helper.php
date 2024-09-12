@@ -123,3 +123,20 @@ function createProduct($name, $description, $price, $stock, $categoryId, $imageU
         throw new PDOException('Error executing database query: ' . $e->getMessage());
     }
 }
+
+function dd(): void
+{
+    $args = func_get_args();
+
+    if (count($args)) {
+        echo "<pre>";
+
+        foreach ($args as $arg) {
+            var_dump($arg);
+        }
+
+        echo "</pre>";
+
+        die();
+    }
+}
