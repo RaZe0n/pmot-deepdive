@@ -101,4 +101,21 @@ class adminController {
         }
         header('Location: /?page=admin');
     }
+
+    public function addProduct() {
+        $query = "INSERT INTO products (name, description, price, stock, imageURL, category) VALUES (:name, :description, :price, :stock, :imageURL, :category)";
+        try {
+            $statement = $this->db->prepare($query);
+            $statement->bindParam(':name', $_POST['productname']);
+            $statement->bindParam(':description', $_POST['description']);
+            $statement->bindParam(':price', $_POST['price']);
+            $statement->bindParam(':stock', $_POST['voorraad']);
+            $statement->bindParam(':imageURL', $_POST['imgurl']);
+            $statement->bindParam(':category', $_POST['category']);
+            $statement->execute();
+        } catch (PDOException $e) {
+            throw new PDOException('Er is iets fout gegaan bij het uitvoeren van de database query', 0, $e);
+        }
+        header('Location: /?page=admin');
+    }
 }
