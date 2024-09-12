@@ -1,6 +1,6 @@
 <?php
-$hideNav = true;
 
+$hideNav = true;
 if (!isAdmin()) {
     header("Location: /");
 }
@@ -153,6 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
                 </div>
 
                 <div class="grid gap-4 mt-2 p-2">
+                    <div class="flex justify-end">
+                        <a href="/?page=addproduct" class="w-10 h-10 flex items-center justify-center bg-white rounded-full">
+                            <i class="fas fa-plus text-green-500 text-2xl"></i>
+                        </a>
+                    </div>
                     <!-- Productsoverview -->
                     <div class="bg-white p-4 rounded-lg shadow-md tab-content">
                         <h2 class="text-gray-500 text-lg font-semibold pb-4">Producten overzicht</h2>
