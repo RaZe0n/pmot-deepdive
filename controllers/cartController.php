@@ -1,7 +1,7 @@
 <?php
 
 require_once('unitils/connection.php');
-require_once('database/connect.php');
+require_once('./database/connect.php');
 function addToShoppingcart()
 {
 
@@ -24,7 +24,6 @@ function getProductsByAccount()
 
 function addToCart()
 {
-    session_start();
     $customerid = $_SESSION['customerid'];
     $productid = $_POST['productid'];
     $conn = dbConnect();

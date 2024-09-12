@@ -6,6 +6,10 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedInUser'] == 2) {
     $errmsg = "Ongeldige inloggegevens";
 }
 
+if (isset($_POST['login'])) {
+    require_once('controllers/loginController.php');
+    loginCheck();
+}
 ?>
 
 <div class="h-full bg-white">
@@ -16,7 +20,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedInUser'] == 2) {
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form class="space-y-6" action="../controllers/login.php" method="POST">
+            <form class="space-y-6" action="" method="POST">
                 <div>
 
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email adress</label>
@@ -37,7 +41,7 @@ if (isset($_SESSION['loggedIn']) && $_SESSION['loggedInUser'] == 2) {
                 </div>
 
                 <div>
-                    <button type="submit" class="flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Inloggen</button>
+                    <button type="submit" name="login" class="flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Inloggen</button>
                 </div>
             </form>
 
