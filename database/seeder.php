@@ -5,6 +5,8 @@ require_once('../configs/helper.php');
 
 $tables = ['products', 'customers', 'articles'];
 
+
+
 foreach ($tables as $table) {
     $sql = "TRUNCATE TABLE $table";
     $db->exec($sql);
@@ -70,6 +72,7 @@ $products = [
         "price" => 199.50,
         "stock" => 10,
         "category" => "basis",
+        "age" => 7,
         "imageURL" => "https://pmot.nl/wp-content/uploads/k1p-6_720x.jpg"
     ],
     [
@@ -78,6 +81,7 @@ $products = [
         "price" => 405.50,
         "stock" => 5,
         "category" => "basis",
+        "age" => 5,
         "imageURL" => "https://pmot.nl/wp-content/uploads/2016/09/T036-1.jpg"
     ],
     [
@@ -119,7 +123,7 @@ $products = [
         Er hoeft niet gesoldeerd te worden, omdat er speciale Lego achtige bouwstenen zijn waar de onderdelen ingestoken kunnen worden en er weer uitgehaald kunnen worden. Met de andere Lego compatible bouwstenen kunnen diverse modellen gebouwd worden, om de elektronica onderdelen in toe te passen. Zo kan inzicht gekregen wat de werking van de diverse elektronica onderdelen is.
         
         Bij deze set hoort een Nederlandstalig lesboek met uitleg over de elektronica en de bouwvoorbeelden van de modellen. Ook wordt geleerd hoe een elektronica circuit er uit zien en hoe de gelezen kan worden.
-        
+
         Daag leerlingen uit om de wonderlijke wereld van elektronica te verkennen en meer inzicht te krijgen van het belang en nut van elektronica in ons dagelijkse leven
         
         Geschikt voor leerlingen vanaf 10 jaar en geschikt voor PO en VO en HB leerlingen die een extra uitdaging nodig hebben",
@@ -200,6 +204,7 @@ foreach ($products as $product) {
         $product['stock'],
         $product['category'],
         $product['imageURL'],
+        $product['age'],
         $db
     );
 }
@@ -214,3 +219,12 @@ foreach ($articles as $article) {
         $db
     );
 }
+$sqlInsert_Orders = "
+INSERT INTO `orders` (`orderOwner`, `status`, `orderDate`, `totalPrice`, `addressInformation`, `paymentInformation`) VALUES
+(1, 'complete', '2023-01-15', 150.75, 1, 1),
+(2, 'pending', '2023-02-20', 200.50, 2, 2),
+(3, 'cancelled', '2023-03-10', 75.00, 3, 3),
+(4, 'complete', '2023-04-05', 300.00, 4, 4),
+(5, 'pending', '2023-05-25', 120.25, 5, 5);
+";
+$db->exec($sqlInsert_Orders);
