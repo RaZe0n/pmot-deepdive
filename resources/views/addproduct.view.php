@@ -86,3 +86,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit" class="rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Toevoegen</button>
   </div>
 </form>
+
+<script>
+  import nspell from 'nspell';
+  import dictionaryNl from 'dictionary-nl';
+
+  // Initialize nspell with the Dutch dictionary
+  dictionaryNl(function(err, dictionary) {
+    if (err) throw err;
+    const spellchecker = nspell(dictionary);
+
+    document.getElementsByTagName('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const comments = document.getElementById('comments').value;
+      const words = comments.split(/\s+/);
+      const errors = words.filter(word => !spellchecker.correct(word));
+
+      if (errors.length > 0) {
+        alert('Spelfouten gevonden: ' + errors.join(', '));
+      } else {
+        alert('Geen spelfouten gevonden!');
+      }
+    });
+  });
+</script>

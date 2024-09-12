@@ -6,6 +6,8 @@
     "watch": "npx tailwindcss -i ./input.css -o ./output.css --watch"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.5.7"
+    "@tailwindcss/forms": "^0.5.7",
+    "dictionary-nl": "^2.0.0",
+    "nspell": "^2.1.5"
   }
 }
