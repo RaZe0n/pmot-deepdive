@@ -1,11 +1,14 @@
 <?php
 
 
-require_once('../unitils/connection.php');
+
+
 
 $invalidLogin = 0;
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+function loginCheck()
+{
+    require_once('./unitils/connection.php');
     $stmt = $db->prepare("SELECT * FROM customers WHERE email = :email");
 
     $stmt->bindParam(':email', $_POST['email']);

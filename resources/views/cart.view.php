@@ -1,4 +1,4 @@
-<?php require_once('controllers/shoppingcartController.php'); ?>
+<?php require_once('controllers/cartController.php'); ?>
 <?php require_once('configs/helper.php'); ?>
 <?php require_once('unitils/connection.php'); ?>
 <?php $products = getProductsByAccount(); ?>
